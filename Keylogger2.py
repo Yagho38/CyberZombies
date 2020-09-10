@@ -1,4 +1,4 @@
-#=====================ATEMÇÂO=====================
+#=====================ATENÇÃO=====================
 #Caso vc tenha bloblemas user os comandos a baixo
 #sudo apt install python3-pip
 #pip3 install pynput
